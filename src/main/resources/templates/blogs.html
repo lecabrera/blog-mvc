@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Bandesal Blog</title>
+    <link  th:href="@{/webjars/bootstrap/5.2.3/css/bootstrap.min.css} " rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="">
+<nav class="navbar navbar-expand-lg navbar-light bg-light static-top">
+    <div class="container">
+        <a class="navbar-brand" href="/">Banco de Desarroollo de El Salvador</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Blogs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Reader</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row mt-5">
+        <h1 class="h3 mb-2 text-gray-800">Blogs</h1>
+        <a th:href="@{/blogs/new}" class="btn btn-facebook btn-block btn-light">Crear Nuevo Blog</a>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Titulo</th>
+                <th>Descripcón</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="blogs: ${blogs}">
+                <td th:text="${blogs.title}">Titulo</td>
+                <td th:text="${blogs.description}">Descripcón</td>
+                <td><a th:href="@{/blogs/update/{id}(id=${blogs.idBlog})}" class="btn btn-circle btn-light">Editar</a></td>
+                <td><a th:href="@{/blogs/delete/{id}(id=${blogs.idBlog})}" class="btn btn-circle  btn-light">Eliminar</a></td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+</body>
+
+</html>
